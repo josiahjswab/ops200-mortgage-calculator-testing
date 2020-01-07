@@ -36,14 +36,14 @@ export default class App extends Component {
   }
 
   calculateMonthlyPayment() {
-    let mortgage = new Mortgage(
+    const mortgage = new Mortgage(
       this.state.principal,
       this.state.interestRate,
       this.state.loanTerm,
       this.state.period
     );
-    let monthlyPayment = mortgage.monthlyPayment();
-    let monthly = document.getElementById('output');
+    const monthlyPayment = mortgage.monthlyPayment();
+    const monthly = document.getElementById('output');
     monthly.innerText = `$${monthlyPayment}`;
   }
 
@@ -51,9 +51,10 @@ export default class App extends Component {
     return (
       <div className='App'>
         <h1> Mortgage Calculator </h1>
-        <input onChange={ this.handleChange } name='principal' />
-        <input onChange={ this.handleChange } name='interestRate' />
-        <input onChange={ this.handleChange } name='loanTerm' />
+        <input onChange={ this.handleChange } placeholder='principle' name='principal' />
+        <input onChange={ this.handleChange } placeholder='interest rate' name='interestRate' />
+        <input onChange={ this.handleChange } placeholder='loan term' name='loanTerm' />
+        <label htmlFor='select'>period</label>
         <select onChange={ this.handleChange } name='period'>
           <option value='12'>Monthly</option>
           <option value='4'>Quarterly</option>
